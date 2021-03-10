@@ -1,6 +1,8 @@
 import { Route } from "react-router-dom";
 import React, { Component } from "react";
 
+import { MessageProvider } from "./messages/MessageProvider"
+
 export default class ApplicationViews extends Component {
 
   render() {
