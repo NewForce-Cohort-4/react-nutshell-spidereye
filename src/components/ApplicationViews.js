@@ -2,7 +2,7 @@ import { Route } from "react-router-dom";
 import React, { Component } from "react";
 
 import { MessageProvider } from "./messages/MessageProvider"
-
+import { MessageForm } from "./messages/MessageForm"
 export default class ApplicationViews extends Component {
 
   render() {

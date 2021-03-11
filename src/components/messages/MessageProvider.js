@@ -16,6 +16,7 @@ export const MessageProvider = (props) => {
         .then(setMessages)
     }
 
+    //posts new message to database
     const addMessage = message => {
         return fetch(`http://localhost:8088/messages`, {
             method: "POST",
@@ -27,6 +28,12 @@ export const MessageProvider = (props) => {
         .then(response => response.json())
     }
 
+    const getMessageById = (id) => {
+        return fetch(`http://localhost:8088/messages/${id}`)
+        .then(res => res.json())
+    } 
+
+    //allows user to modify already-existing message in the database
     const updateMessage = message => {
         return fetch (`http://localhost:8088/messages/${message.id}`, {
             method: "PUT",
@@ -38,9 +45,10 @@ export const MessageProvider = (props) => {
             .then(getMessages)
     }
 
+    //makes the elements/functions in the yellow brackets available to other components
     return (
         <MessageContext.Provider value={{
-            messages, getMessages, addMessage, updateMessage
+            messages, getMessages, getMessageById, addMessage, updateMessage
         }}>
             {props.children}
         </MessageContext.Provider>
