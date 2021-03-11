@@ -36,7 +36,7 @@ export const TaskProvider = (props) => {
     }
 
     const updateTask = task => {
-        return fetch(`http://localhost:8088/animals/${task.id}`, {
+        return fetch(`http://localhost:8088/tasks/${task.id}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json"
@@ -48,7 +48,8 @@ export const TaskProvider = (props) => {
     
     return (
         <TaskContext.Provider value={{
-            tasks, getTasks, addTask, getTaskById, releaseTask, updateTask, searchTerms, setSearchTerms
+            tasks, getTasks, addTask, getTaskById, releaseTask, updateTask
+
         }}>
             {props.children}
         </TaskContext.Provider>

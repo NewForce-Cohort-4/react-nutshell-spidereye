@@ -5,7 +5,7 @@ import "./Task.css"
 import { useHistory } from "react-router-dom"
 
 export const TaskList = () => {
-  const { tasks, getTasks, searchTerms } = useContext(TaskContext)
+  const { tasks, getTasks } = useContext(TaskContext)
 
   // Since you are no longer ALWAYS displaying all of the animals
   const [ filteredTasks, setFiltered ] = useState([])
@@ -15,19 +15,6 @@ export const TaskList = () => {
   useEffect(() => {
       getTasks()
   }, [])
-
-  // useEffect dependency array with dependencies - will run if dependency changes (state)
-  // searchTerms will cause a change
-  useEffect(() => {
-    if (searchTerms !== "") {
-      // If the search field is not blank, display matching animals
-      const subset = tasks.filter(task => task.name.toLowerCase().includes(searchTerms))
-      setFiltered(subset)
-    } else {
-      // If the search field is blank, display all animals
-      setFiltered(tasks)
-    }
-  }, [searchTerms, tasks])
 
   return (
     <>
