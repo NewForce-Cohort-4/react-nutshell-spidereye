@@ -7,6 +7,7 @@ export const TaskForm = () => {
     const { addTask, getTaskById, updateTask } = useContext(TaskContext)
   
     const [tasks, setTasks] = useState({})
+
     
     const [isLoading, setIsLoading] = useState(true);
 
@@ -57,7 +58,7 @@ export const TaskForm = () => {
         <fieldset>
           <div className="form-group">
             <label htmlFor="taskDescription">Task to be performed: </label>
-            <input type="text" id="taskDescription" name="name" required autoFocus className="form-control"
+            <input type="text" id="taskDescription" name="task" required autoFocus className="form-control"
             placeholder="Task description"
             onChange={handleControlledInputChange}
             defaultValue={tasks.task}/>

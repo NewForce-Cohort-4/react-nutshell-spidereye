@@ -6,7 +6,7 @@ export const TaskProvider = (props) => {
 
     const [tasks, setTasks] = useState([])
 
-    const getTasks = () => {
+    const getTasks = () => { 
         return fetch("http://localhost:8088/tasks")
         .then(res => res.json())
         .then(setTasks)

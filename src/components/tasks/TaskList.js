@@ -7,8 +7,6 @@ import { useHistory } from "react-router-dom"
 export const TaskList = () => {
   const { tasks, getTasks } = useContext(TaskContext)
 
-  // Since you are no longer ALWAYS displaying all of the animals
-  const [ filteredTasks, setFiltered ] = useState([])
   const history = useHistory()
 
   // Empty dependency array - useEffect only runs after first render
@@ -16,19 +14,18 @@ export const TaskList = () => {
       getTasks()
   }, [])
 
+
   return (
     <>
       <h1>Tasks</h1>
-
       <button onClick={() => history.push("/tasks/create")}>
           Add Task
       </button>
-      <div className="tasks">
-      {
-        filteredTasks.map(task => {
-          return <TaskCard key={task.id} animal={task} />
-        })
-      }
+      <div className = "tasks">
+          {tasks.map(task => {
+            return <TaskCard key = {task.id} task={task} />
+          })
+        }
       </div>
     </>
   )
