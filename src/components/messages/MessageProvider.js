@@ -11,7 +11,7 @@ export const MessageProvider = (props) => {
 
     //gets the data from database and then uses setMessages function make available 
     const getMessages = () => {
-        return fetch(`http://localhost:8088/messages`)
+        return fetch(`http://localhost:8088/messages?_expand=user`)
         .then(res => res.json())
         .then(setMessages)
     }

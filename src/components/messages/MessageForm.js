@@ -20,9 +20,7 @@ export const MessageForm = () => {
         const newMessage = {...message}
         
         newMessage[event.target.id] = event.target.value
-        console.log(event.target.id)
-        console.log(event.target.value)
-        debugger
+        
         
         //updates state
         setMessage(newMessage)
@@ -35,15 +33,19 @@ export const MessageForm = () => {
         if(messageId){
             updateMessage({
                 id: message.id,
+                userId: message.userId,
                 messageText: message.messageText
 
             })
             .then(() => history.push(`/messages`))
         } else {
             addMessage({
+                userId: localStorage.getItem("nutshell_user"),
                 messageText: message.messageText
+
+
             })
-            .then(() => history.push("/messages"))
+            .then(() => history.push(`/messages`))
         }
     }
 

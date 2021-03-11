@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom"
 import { MessageContext } from "./MessageProvider"
 
 export const MessageList = () => {
-    // This state changes when `getEmployees()` is invoked below
+    // This state changes when `getMessages()` is invoked below
     const history = useHistory()
     const { messages, getMessages } = useContext(MessageContext)
   
@@ -16,21 +16,24 @@ export const MessageList = () => {
   
   
     return (
-      <>
+     <>
       <h2>Messages</h2>
       <button onClick={() => {history.push("/messages/create")}}>
          Add Message
       </button>
       <div className="messages">
-        {
+         {
           messages.map(message => {
-            
-            return <MessageCard 
-                    key={message.id} 
-                    message={message}/>
+                return (
+                <p><b>{message.user.name}</b> says   "{message.messageText}"</p>
+                
+                )
+                
           })
-        }
-      </div>
-      </>
-    )
-  }
+            
+          }
+          </div>
+          </>
+        )
+   
+     }
