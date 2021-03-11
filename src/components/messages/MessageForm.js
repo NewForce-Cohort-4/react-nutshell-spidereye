@@ -20,6 +20,10 @@ export const MessageForm = () => {
         const newMessage = {...message}
         
         newMessage[event.target.id] = event.target.value
+        console.log(event.target.id)
+        console.log(event.target.value)
+        debugger
+        
         //updates state
         setMessage(newMessage)
 
@@ -39,6 +43,7 @@ export const MessageForm = () => {
             addMessage({
                 messageText: message.messageText
             })
+            .then(() => history.push("/messages"))
         }
     }
 
@@ -65,8 +70,8 @@ export const MessageForm = () => {
             <h2 className="MessageForm__title">New Message</h2>
              <fieldset>
             <div className="form-group">
-                <label htmlFor="name">Message name: </label>
-             <input type="text" id="name" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Type message here." value={message.messageText}/>
+                <label htmlFor="messageText">Message text </label>
+             <input type="text" id="messageText" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Type message here." value={message.messageText}/>
            </div>
            </fieldset>
           
