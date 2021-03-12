@@ -6,8 +6,9 @@ export const TaskCard = ({ task }) => (
     <section className="task">
         <h3 className="task__name">
           <Link to={`/tasks/detail/${task.id}`}>
-            { task.task }
+            { task.task } 
           </Link>
         </h3>
+        <p>Expected to be done by: {task.date}</p>
     </section>
 )

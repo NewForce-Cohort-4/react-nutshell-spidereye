@@ -28,11 +28,14 @@ export const TaskForm = () => {
         if (taskId){
           updateTask({
               id: tasks.id,
+              date: tasks.date,
               task: tasks.task
+              
           })
           .then(() => history.push(`/tasks/detail/${tasks.id}`))
         }else {
           addTask({ 
+              date: tasks.date,
               task: tasks.task
           })
           .then(() => history.push("/tasks"))
@@ -55,6 +58,14 @@ export const TaskForm = () => {
     return (
       <form className="taskForm">
         <h2 className="taskForm__title">New Task</h2>
+        <fieldset>
+          <div className="form-group">
+            <label htmlFor="taskDate">Task to be completed: </label>
+            <input type="date" id="taskDate" name="date" required autoFocus className="form-control"
+            onChange={handleControlledInputChange}
+            defaultValue={tasks.task}/>
+          </div>
+        </fieldset>
         <fieldset>
           <div className="form-group">
             <label htmlFor="taskDescription">Task to be performed: </label>
