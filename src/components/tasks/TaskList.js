@@ -2,12 +2,12 @@ import React, { useContext, useEffect, useState } from "react"
 import { TaskContext } from "./TaskProvider"
 import { TaskCard } from "./TaskCard"
 import "./Task.css"
-import { useHistory } from "react-router-dom"
+import { TaskForm } from "./TaskForm"
 
 export const TaskList = () => {
   const { tasks, getTasks } = useContext(TaskContext)
 
-  const history = useHistory()
+  let [displayForm, setDisplayForm] = useState(false)
 
   // Empty dependency array - useEffect only runs after first render
   useEffect(() => {
@@ -16,11 +16,21 @@ export const TaskList = () => {
 
 
   return (
+    displayForm ?
     <>
       <h1>Tasks</h1>
-      <button onClick={() => history.push("/tasks/create")}>
-          Add Task
-      </button>
+      <TaskForm />
+      <div className = "tasks">
+          {tasks.map(task => {
+            return <TaskCard key = {task.id} task={task} />
+          })
+        }
+      </div>
+    </>
+    :
+    <>
+      <h1>Tasks</h1>
+      <button onClick={() => setDisplayForm(true)}>Add Task</button>
       <div className = "tasks">
           {tasks.map(task => {
             return <TaskCard key = {task.id} task={task} />

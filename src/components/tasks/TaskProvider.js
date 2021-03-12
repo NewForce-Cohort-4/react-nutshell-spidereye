@@ -6,8 +6,9 @@ export const TaskProvider = (props) => {
 
     const [tasks, setTasks] = useState([])
 
+    //getTasks fetchs all the objects with a completed that is false and prints it to the DOM
     const getTasks = () => { 
-        return fetch("http://localhost:8088/tasks")
+        return fetch("http://localhost:8088/tasks?completed=false")
         .then(res => res.json())
         .then(setTasks)
     }
@@ -28,31 +29,38 @@ export const TaskProvider = (props) => {
             .then(res => res.json())
     }
 
-    const releaseTask = taskId => {
+    //completeTask takes in the specific ID and turns the property "completed" to true.
+    //then calls getTasks
+    const completeTask = taskId => {
         return fetch(`http://localhost:8088/tasks/${taskId}`, {
-            method: "DELETE"
+            method: "PATCH",
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify({
+                completed: true
+            })        
         })
-            .then(getTasks)
+        .then(getTasks)
     }
 
     const updateTask = task => {
         return fetch(`http://localhost:8088/tasks/${task.id}`, {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(task)
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(task)
         })
           .then(getTasks)
       }
     
     return (
         <TaskContext.Provider value={{
-            tasks, getTasks, addTask, getTaskById, releaseTask, updateTask
+            tasks, getTasks, addTask, getTaskById, completeTask, updateTask
 
         }}>
             {props.children}
         </TaskContext.Provider>
     )
 }
-    

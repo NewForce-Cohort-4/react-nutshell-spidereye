@@ -29,6 +29,7 @@ export const TaskForm = () => {
           updateTask({
               id: tasks.id,
               date: tasks.date,
+              completed: tasks.completed,
               task: tasks.task
               
           })
@@ -36,6 +37,7 @@ export const TaskForm = () => {
         }else {
           addTask({ 
               date: tasks.date,
+              completed: tasks.completed,
               task: tasks.task
           })
           .then(() => history.push("/tasks"))
@@ -60,10 +62,10 @@ export const TaskForm = () => {
         <h2 className="taskForm__title">New Task</h2>
         <fieldset>
           <div className="form-group">
-            <label htmlFor="taskDate">Task to be completed: </label>
+            <label htmlFor="taskDate">Task to be performed: </label>
             <input type="date" id="taskDate" name="date" required autoFocus className="form-control"
             onChange={handleControlledInputChange}
-            defaultValue={tasks.task}/>
+            defaultValue={tasks.date}/>
           </div>
         </fieldset>
         <fieldset>
