@@ -3,11 +3,33 @@ import React, { Component } from "react"
 import { TaskProvider } from './tasks/TaskProvider'
 import { TaskList } from './tasks/TaskList'
 import { TaskForm } from './tasks/TaskForm'
+import { MessageProvider } from "./messages/MessageProvider"
+import { MessageForm } from "./messages/MessageForm"
+import { MessageList } from "./messages/MessageList"
+
 
 export const ApplicationViews = () => {
 
     return (
       <>
+      <MessageProvider>
+        
+          <Route exact path="/messages/">
+             <MessageList />
+          </Route>
+
+          <Route exact path="/messages/create">
+              <MessageList />
+              <MessageForm />
+          </Route>
+
+          <Route exact path="/messages/edit/:messageId(\d+)">
+              <MessageList />
+              <MessageForm />
+          </Route>
+
+        </MessageProvider>
+
         <TaskProvider>
           <Route exact path="/tasks">
               <TaskList />
@@ -22,3 +44,23 @@ export const ApplicationViews = () => {
       </>
     )
   }
+
+
+
+export const ApplicationViews = () => {
+
+
+    return (
+      <>
+       {/* <Route exact path="/">
+                <Home />
+       </Route> */}
+
+       
+       
+      </>
+    )
+  
+
+
+    }
