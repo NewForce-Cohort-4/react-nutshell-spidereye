@@ -3,7 +3,6 @@ import React from "react";
 import { EventProvider } from "./event/EventProvider"
 import { EventForm } from "./event/EventForm"
 import { EventList } from "./event/EventList"
-import { Home } from "../Home.js"
 import { MessageProvider } from "./messages/MessageProvider"
 import { MessageForm } from "./messages/MessageForm"
 import { MessageList } from "./messages/MessageList"
@@ -13,13 +12,6 @@ export const ApplicationViews = () => {
     return (
       <>
 
-        <EventProvider>
-          <Route exact path="/home">
-            <Home />
-
-            <EventList />
-          </Route>
-        </EventProvider>
 
 
         <Route
