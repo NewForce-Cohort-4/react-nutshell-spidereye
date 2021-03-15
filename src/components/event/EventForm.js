@@ -62,7 +62,7 @@ export const EventForm = () => {
       }
     }
 
-    // Get customers and locations. If animalId is in the URL, getAnimalById
+    // Get events. If eventId is in the URL, getEventById
     useEffect(() => {
         if (eventId){
           getEventById(eventId)
