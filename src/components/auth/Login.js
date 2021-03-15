@@ -33,7 +33,7 @@ export const Login = props => {
         <main className="container--login">
             <dialog className="dialog dialog--auth" ref={existDialog}>
                 <div>User does not exist</div>
-                <button className="button--close" onClick={e => existDialog.current.close()}>Close</button>
+                <button className="btn btn-primary button--close" onClick={e => existDialog.current.close()}>Close</button>
             </dialog>
 
             <section>
@@ -49,7 +49,7 @@ export const Login = props => {
                             required autoFocus />
                     </fieldset>
                     <fieldset>
-                        <button type="submit">
+                        <button type="submit" className="btn btn-primary">
                             Sign in
                         </button>
                     </fieldset>
