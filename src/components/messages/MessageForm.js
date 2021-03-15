@@ -112,7 +112,9 @@ export const MessageForm = () => {
                  }}>
                {messageId ? <>Submit changes</> : <>Submit new message</>} </button>
 
-               <button onClick={handleDelete} className="btn btn-primary delete-btn"> {messageId ? <> Delete </>: <> Cancel </>}</button>
+               <button onClick={() => {
+                    history.push(`/messages/`)
+              }} className="btn btn-primary delete-btn"> {messageId ? <> Delete </>: <> Cancel </>}</button>
             </form>
 
 
