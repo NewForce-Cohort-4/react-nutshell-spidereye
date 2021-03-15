@@ -26,8 +26,6 @@ export const MessageForm = () => {
         
         //I don't understand this
         newMessage[event.target.id] = event.target.value
-        console.log(event.target.id)
-        debugger
         
         //updates state
         setMessage(newMessage)
