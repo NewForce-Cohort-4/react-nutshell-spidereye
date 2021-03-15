@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React from "react";
 import NavBar from "./nav/NavBar";
 import { Login } from "./auth/Login"
 import { Register } from "./auth/Register"
-import ApplicationViews from "./ApplicationViews";
+import { ApplicationViews } from "./ApplicationViews";
 import "./Nutshell.css";
 import { Route, Redirect } from "react-router-dom";
 

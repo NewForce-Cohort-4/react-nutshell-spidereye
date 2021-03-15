@@ -1,11 +1,23 @@
 import { Route } from "react-router-dom";
-import React, { Component } from "react";
+import React from "react";
+import { ArticleProvider } from "./article/ArticleProvider";
+import { ArticleForm } from "./article/ArticleForm"
+import { ArticleList } from "./article/ArticleList"
+import { EventProvider } from "./event/EventProvider"
+import { EventForm } from "./event/EventForm"
+import { EventList } from "./event/EventList"
+import { Home } from "../Home.js"
 
-export default class ApplicationViews extends Component {
+export const ApplicationViews = () => {
 
-  render() {
     return (
-      <React.Fragment>
+      <>
+        <ArticleProvider>
+          <Route exact path="/home">
+            <Home />
+            <ArticleList />
+          </Route>
+        </ArticleProvider>
 
         <Route
           exact path="/" render={props => {
@@ -42,14 +54,35 @@ export default class ApplicationViews extends Component {
           }}
         />
 
-        <Route
-          path="/events" render={props => {
-            return null
-            // Remove null and return the component which will show the user's events
-          }}
-        />
+        <ArticleProvider>
+            <Route exact path="/articles">
+                <ArticleList />
+            </Route>
+            <Route exact path="/articles/create">
+                <ArticleForm />
+                <ArticleList />
+            </Route>
+            <Route path="/articles/edit/:articleId(\d+)">
+                <ArticleForm />
+                <ArticleList />
+            </Route>
+        </ArticleProvider>
 
-      </React.Fragment>
+        <EventProvider>
+            <Route exact path="/events">
+                <EventList />
+            </Route>
+            <Route exact path="/events/create">
+                <EventForm />
+                <EventList />
+            </Route>
+            <Route path="/events/edit/:eventId(\d+)">
+                <EventForm />
+                <EventList />
+            </Route>
+        </EventProvider>
+
+
+      </>
     );
-  }
 }
