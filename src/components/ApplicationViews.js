@@ -1,55 +1,42 @@
 import { Route } from "react-router-dom";
 import React, { Component } from "react";
 
-export default class ApplicationViews extends Component {
+import { MessageProvider } from "./messages/MessageProvider"
+import { MessageForm } from "./messages/MessageForm"
+import { MessageList } from "./messages/MessageList"
 
-  render() {
+
+
+export const ApplicationViews = () => {
+
+
     return (
-      <React.Fragment>
+      <>
+       {/* <Route exact path="/">
+                <Home />
+       </Route> */}
 
-        <Route
-          exact path="/" render={props => {
-            return null
-            // Remove null and return the component which will show news articles
-          }}
-        />
+       <MessageProvider>
+     
+         <Route exact path="/messages/">
+            <MessageList />
+         </Route>
 
-        <Route
-          exact path="/register" render={props => {
-            return null
-            // Remove null and return the component which will handle user registration
-          }}
-        />
+         <Route exact path="/messages/create">
+            <MessageList />
+            <MessageForm />
+         </Route>
 
-        <Route
-          path="/friends" render={props => {
-            return null
-            // Remove null and return the component which will show list of friends
-          }}
-        />
+         <Route exact path="/messages/edit/:messageId(\d+)">
+            <MessageList />
+            <MessageForm />
+         </Route>
+       
+        </MessageProvider>
+       
+      </>
+    )
+  
 
-        <Route
-          path="/messages" render={props => {
-            return null
-            // Remove null and return the component which will show the messages
-          }}
-        />
 
-        <Route
-          path="/tasks" render={props => {
-            return null
-            // Remove null and return the component which will show the user's tasks
-          }}
-        />
-
-        <Route
-          path="/events" render={props => {
-            return null
-            // Remove null and return the component which will show the user's events
-          }}
-        />
-
-      </React.Fragment>
-    );
-  }
-}
+    }
