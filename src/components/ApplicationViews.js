@@ -18,12 +18,18 @@ export const ApplicationViews = () => {
 
        <MessageProvider>
      
-         <Route exact path="/messages/create">
-           <MessageForm />
+         <Route exact path="/messages/">
+            <MessageList />
          </Route>
 
-         <Route exact path="/messages">
+         <Route exact path="/messages/create">
             <MessageList />
+            <MessageForm />
+         </Route>
+
+         <Route exact path="/messages/edit/:messageId(\d+)">
+            <MessageList />
+            <MessageForm />
          </Route>
        
         </MessageProvider>
