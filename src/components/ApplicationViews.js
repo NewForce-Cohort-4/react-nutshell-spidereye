@@ -1,8 +1,5 @@
 import { Route } from "react-router-dom";
 import React from "react";
-import { ArticleProvider } from "./article/ArticleProvider";
-import { ArticleForm } from "./article/ArticleForm"
-import { ArticleList } from "./article/ArticleList"
 import { EventProvider } from "./event/EventProvider"
 import { EventForm } from "./event/EventForm"
 import { EventList } from "./event/EventList"
@@ -12,12 +9,15 @@ export const ApplicationViews = () => {
 
     return (
       <>
-        <ArticleProvider>
+
+        <EventProvider>
           <Route exact path="/home">
             <Home />
-            <ArticleList />
+
+            <EventList />
           </Route>
-        </ArticleProvider>
+        </EventProvider>
+
 
         <Route
           exact path="/" render={props => {
@@ -54,19 +54,7 @@ export const ApplicationViews = () => {
           }}
         />
 
-        <ArticleProvider>
-            <Route exact path="/articles">
-                <ArticleList />
-            </Route>
-            <Route exact path="/articles/create">
-                <ArticleForm />
-                <ArticleList />
-            </Route>
-            <Route path="/articles/edit/:articleId(\d+)">
-                <ArticleForm />
-                <ArticleList />
-            </Route>
-        </ArticleProvider>
+
 
         <EventProvider>
             <Route exact path="/events">
