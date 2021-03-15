@@ -4,6 +4,9 @@ import { EventProvider } from "./event/EventProvider"
 import { EventForm } from "./event/EventForm"
 import { EventList } from "./event/EventList"
 import { Home } from "../Home.js"
+import { MessageProvider } from "./messages/MessageProvider"
+import { MessageForm } from "./messages/MessageForm"
+import { MessageList } from "./messages/MessageList"
 
 export const ApplicationViews = () => {
 
@@ -40,12 +43,23 @@ export const ApplicationViews = () => {
           }}
         />
 
-        <Route
-          path="/messages" render={props => {
-            return null
-            // Remove null and return the component which will show the messages
-          }}
-        />
+        <MessageProvider>
+     
+         <Route exact path="/messages/">
+            <MessageList />
+         </Route>
+
+         <Route exact path="/messages/create">
+            <MessageList />
+            <MessageForm />
+         </Route>
+
+         <Route exact path="/messages/edit/:messageId(\d+)">
+            <MessageList />
+            <MessageForm />
+         </Route>
+       
+        </MessageProvider>
 
         <Route
           path="/tasks" render={props => {
