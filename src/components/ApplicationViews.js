@@ -13,7 +13,7 @@ export const ApplicationViews = () => {
     return (
       <>
       <MessageProvider>
-        
+
           <Route exact path="/messages/">
              <MessageList />
           </Route>
@@ -44,23 +44,3 @@ export const ApplicationViews = () => {
       </>
     )
   }
-
-
-
-export const ApplicationViews = () => {
-
-
-    return (
-      <>
-       {/* <Route exact path="/">
-                <Home />
-       </Route> */}
-
-       
-       
-      </>
-    )
-  
-
-
-    }
