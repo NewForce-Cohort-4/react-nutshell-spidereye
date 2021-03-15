@@ -3,9 +3,6 @@ import React from "react";
 import { ArticleProvider } from "./article/ArticleProvider";
 import { ArticleForm } from "./article/ArticleForm"
 import { ArticleList } from "./article/ArticleList"
-import { EventProvider } from "./event/EventProvider"
-import { EventForm } from "./event/EventForm"
-import { EventList } from "./event/EventList"
 import { Home } from "../Home.js"
 
 export const ApplicationViews = () => {
@@ -68,19 +65,7 @@ export const ApplicationViews = () => {
             </Route>
         </ArticleProvider>
 
-        <EventProvider>
-            <Route exact path="/events">
-                <EventList />
-            </Route>
-            <Route exact path="/events/create">
-                <EventForm />
-                <EventList />
-            </Route>
-            <Route path="/events/edit/:eventId(\d+)">
-                <EventForm />
-                <EventList />
-            </Route>
-        </EventProvider>
+
 
 
       </>
