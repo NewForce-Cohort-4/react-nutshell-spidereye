@@ -25,7 +25,7 @@ return (
         <div className="article__url">{ article.url }</div>
         <div className="article__synopsis">{ article.synopsis }</div>
         <div className="article__date">{ date.toLocaleDateString() }</div>
-        <button className="btn btn-primary" onClick={handleRelease}>Release Article</button>
+        <button className="btn btn-danger" onClick={handleRelease}>Delete</button>
         <button className="btn btn-secondary" onClick={() => {
             history.push(`/articles/edit/${article.id}`)
             }}>Edit
