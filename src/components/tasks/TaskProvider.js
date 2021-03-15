@@ -22,6 +22,7 @@ export const TaskProvider = (props) => {
             body: JSON.stringify(task)
         })
         .then(response => response.json())
+        .then(getTasks)
     }
 
     const getTaskById = (id) => {

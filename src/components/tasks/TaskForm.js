@@ -3,7 +3,10 @@ import { TaskContext } from "./TaskProvider"
 import "./Task.css"
 import { useHistory, useParams } from 'react-router-dom';
 
-export const TaskForm = () => {
+
+//functionToHideForm, which is really setDisplayForm, is passed as a prop
+
+export const TaskForm = ({functionToHideForm}) => {
     const { addTask, getTaskById, updateTask } = useContext(TaskContext)
   
     const [tasks, setTasks] = useState({})
@@ -29,18 +32,20 @@ export const TaskForm = () => {
           updateTask({
               id: tasks.id,
               date: tasks.date,
-              completed: tasks.completed,
+              completed: tasks.completed, 
               task: tasks.task
               
           })
           .then(() => history.push(`/tasks/detail/${tasks.id}`))
-        }else {
+        } else {
           addTask({ 
               date: tasks.date,
-              completed: tasks.completed,
+              completed: false,
               task: tasks.task
           })
-          .then(() => history.push("/tasks"))
+          //after a saving a newly created task, setDisplayForm is called and set to false, which hides the form to enter a new task
+          .then(() => functionToHideForm(false))
+
         }
       }
     }
