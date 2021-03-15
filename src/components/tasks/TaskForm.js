@@ -1,9 +1,12 @@
-import React, { useContext, useEffect, useState } from "react"
+import React, { useContext, useEffect, useImperativeHandle, useState } from "react"
 import { TaskContext } from "./TaskProvider"
 import "./Task.css"
 import { useHistory, useParams } from 'react-router-dom';
 
-export const TaskForm = () => {
+
+//functionToHideForm, which is really setDisplayForm, is passed as a prop
+
+export const TaskForm = ({functionToHideForm}) => {
     const { addTask, getTaskById, updateTask } = useContext(TaskContext)
   
     const [tasks, setTasks] = useState({})
@@ -29,16 +32,22 @@ export const TaskForm = () => {
           updateTask({
               id: tasks.id,
               date: tasks.date,
-              task: tasks.task
+              completed: tasks.completed, 
+              task: tasks.task,
+              userId: parseInt(tasks.userId)
               
           })
           .then(() => history.push(`/tasks/detail/${tasks.id}`))
-        }else {
+        } else {
           addTask({ 
               date: tasks.date,
-              task: tasks.task
+              completed: false,
+              task: tasks.task,
+              userId: parseInt(localStorage.getItem("nutshell_user"))
           })
-          .then(() => history.push("/tasks"))
+          //after a saving a newly created task, setDisplayForm is called and set to false, which hides the form to enter a new task
+          .then(() => functionToHideForm(false))
+
         }
       }
     }
@@ -60,10 +69,10 @@ export const TaskForm = () => {
         <h2 className="taskForm__title">New Task</h2>
         <fieldset>
           <div className="form-group">
-            <label htmlFor="taskDate">Task to be completed: </label>
+            <label htmlFor="taskDate">Task to be performed: </label>
             <input type="date" id="taskDate" name="date" required autoFocus className="form-control"
             onChange={handleControlledInputChange}
-            defaultValue={tasks.task}/>
+            defaultValue={tasks.date}/>
           </div>
         </fieldset>
         <fieldset>

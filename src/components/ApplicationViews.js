@@ -3,10 +3,11 @@ import React, { Component } from "react"
 import { TaskProvider } from './tasks/TaskProvider'
 import { TaskList } from './tasks/TaskList'
 import { TaskForm } from './tasks/TaskForm'
-import { TaskDetail } from "./tasks/TaskDetail"
+import { TaskDetail } from './tasks/'
 import { MessageProvider } from "./messages/MessageProvider"
 import { MessageForm } from "./messages/MessageForm"
 import { MessageList } from "./messages/MessageList"
+
 
 export const ApplicationViews = () => {
 
