@@ -4,9 +4,13 @@ import { ArticleProvider } from "./article/ArticleProvider";
 import { ArticleForm } from "./article/ArticleForm"
 import { ArticleList } from "./article/ArticleList"
 import { Home } from "../Home.js"
+import { TaskProvider } from './tasks/TaskProvider'
+import { TaskList } from './tasks/TaskList'
+import { TaskForm } from './tasks/TaskForm'
 import { MessageProvider } from "./messages/MessageProvider"
 import { MessageForm } from "./messages/MessageForm"
 import { MessageList } from "./messages/MessageList"
+
 
 export const ApplicationViews = () => {
 
@@ -58,12 +62,17 @@ export const ApplicationViews = () => {
    
     </MessageProvider>
 
-        <Route
-          path="/tasks" render={props => {
-            return null
-            // Remove null and return the component which will show the user's tasks
-          }}
-        />
+    <TaskProvider>
+          <Route exact path="/tasks">
+              <TaskList />
+          </Route>
+          <Route exact path="/tasks/create">
+              <TaskForm />
+          </Route>
+          <Route path="/tasks/edit/:taskId(\d+)">
+              <TaskForm />
+          </Route>
+    </TaskProvider>
 
         <ArticleProvider>
             <Route exact path="/articles">
