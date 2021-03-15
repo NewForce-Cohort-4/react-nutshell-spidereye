@@ -16,8 +16,8 @@ export const NextEventCard = ({ event }) => {
     }
     
 return (
-    <section className="event card">
-        <h3 className="event__name">
+    <section className="nextEvent card">
+        <h3 className="nextEvent__name">
                 { event.name }
         </h3>
         <div className="event__location">{ event.location }</div>

@@ -10,7 +10,7 @@ export const EventForm = () => {
     const [newEvent, setNewEvent] = useState({
         name: "",
         location: "",
-        time: Date.now(),
+        date: "",
         userId: parseInt(localStorage.getItem("nutshell_user"))
     })
     //wait for data before button is active
@@ -33,8 +33,8 @@ export const EventForm = () => {
     }
 
     const handleSaveEvent = () => {
-      if (newEvent.name ===  "") {
-          window.alert("Please add a name")
+      if (newEvent.name ===  "" || newEvent.location === "" || newEvent.date === "") {
+          window.alert("Please fill out all input fields")
       } else {
         //disable the button - no extra clicks
         setIsLoading(true);
@@ -44,7 +44,7 @@ export const EventForm = () => {
               id: newEvent.id,
               name: newEvent.name,
               location: newEvent.location,
-              time: newEvent.time,
+              date: newEvent.date,
               userId: parseInt(newEvent.userId)
           })
           .then(() => history.push(`/events/`))
@@ -54,7 +54,7 @@ export const EventForm = () => {
             id: newEvent.id,
             name: newEvent.name,
             location: newEvent.location,
-            time: Date.now(),
+            date: newEvent.date,
             userId: parseInt(localStorage.getItem("nutshell_user"))
           })
           .then(() => history.push("/events/"))
@@ -97,6 +97,15 @@ export const EventForm = () => {
             placeholder="Location"
             onChange={handleControlledInputChange}
             defaultValue={newEvent.location}/>
+          </div>
+        </fieldset>
+        <fieldset>
+          <div className="form-group">
+            <label htmlFor="eventDate">Location: </label>
+            <input type="date" id="eventDate" name="date" className="form-control"
+            placeholder="Date"
+            onChange={handleControlledInputChange}
+            defaultValue={newEvent.date}/>
           </div>
         </fieldset>
         

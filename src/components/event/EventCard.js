@@ -21,7 +21,8 @@ return (
                 { event.name }
         </h3>
         <div className="event__location">{ event.location }</div>
-        <button className="btn btn-primary" onClick={handleRelease}>Release </button>
+        <div className="event__date">{ event.date }</div>
+        <button className="btn btn-primary" onClick={handleRelease}>Release</button>
         <button className="btn btn-secondary" onClick={() => {
             history.push(`/events/edit/${event.id}`)
             }}>Edit

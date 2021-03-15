@@ -18,7 +18,7 @@ export const EventList = () => {
 
   // useEffect dependency array with dependencies - will run if dependency changes (state)
   useEffect(() => {
-    const sortedEvents = events.sort((a, b) => b.time - a.time)
+    const sortedEvents = events.sort((a, b) => b.date - a.date)
 
     setFiltered(sortedEvents)
   }, [events])
