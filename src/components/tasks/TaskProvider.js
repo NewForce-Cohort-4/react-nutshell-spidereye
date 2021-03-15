@@ -6,9 +6,11 @@ export const TaskProvider = (props) => {
 
     const [tasks, setTasks] = useState([])
 
+    const userId = localStorage.getItem("nutshell_user")
     //getTasks fetchs all the objects with a completed that is false and prints it to the DOM
     const getTasks = () => { 
-        return fetch("http://localhost:8088/tasks?completed=false")
+        console.log(userId)
+        return fetch(`http://localhost:8088/tasks?completed=false&userId=${userId}`)
         .then(res => res.json())
         .then(setTasks)
     }
@@ -26,7 +28,7 @@ export const TaskProvider = (props) => {
     }
 
     const getTaskById = (id) => {
-        return fetch(`http://localhost:8088/tasks/${id}?_expand=location&_expand=customer`)
+        return fetch(`http://localhost:8088/tasks/${id}`)
             .then(res => res.json())
     }
 

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react"
+import React, { useContext, useEffect, useImperativeHandle, useState } from "react"
 import { TaskContext } from "./TaskProvider"
 import "./Task.css"
 import { useHistory, useParams } from 'react-router-dom';
@@ -33,7 +33,8 @@ export const TaskForm = ({functionToHideForm}) => {
               id: tasks.id,
               date: tasks.date,
               completed: tasks.completed, 
-              task: tasks.task
+              task: tasks.task,
+              userId: parseInt(tasks.userId)
               
           })
           .then(() => history.push(`/tasks/detail/${tasks.id}`))
@@ -41,7 +42,8 @@ export const TaskForm = ({functionToHideForm}) => {
           addTask({ 
               date: tasks.date,
               completed: false,
-              task: tasks.task
+              task: tasks.task,
+              userId: parseInt(localStorage.getItem("nutshell_user"))
           })
           //after a saving a newly created task, setDisplayForm is called and set to false, which hides the form to enter a new task
           .then(() => functionToHideForm(false))
