@@ -6,6 +6,7 @@ import { EventList } from "./event/EventList"
 import { TaskProvider } from './tasks/TaskProvider'
 import { TaskList } from './tasks/TaskList'
 import { TaskForm } from './tasks/TaskForm'
+import { TaskDetail } from './tasks/TaskDetails2'
 import { MessageProvider } from "./messages/MessageProvider"
 import { MessageForm } from "./messages/MessageForm"
 import { MessageList } from "./messages/MessageList"
@@ -15,29 +16,6 @@ export const ApplicationViews = () => {
 
     return (
       <>
-
-
-
-        <Route
-          exact path="/" render={props => {
-            return null
-            // Remove null and return the component which will show news articles
-          }}
-        />
-
-        <Route
-          exact path="/register" render={props => {
-            return null
-            // Remove null and return the component which will handle user registration
-          }}
-        />
-
-        <Route
-          path="/friends" render={props => {
-            return null
-            // Remove null and return the component which will show list of friends
-          }}
-        />
 
         <MessageProvider>
      
@@ -57,7 +35,11 @@ export const ApplicationViews = () => {
        
         </MessageProvider>
 
+
         <TaskProvider>
+          <Route exact path="/tasks/detail/:tasksId(\d+)">
+		                    <TaskDetail />
+	        </Route>
           <Route exact path="/tasks">
               <TaskList />
           </Route>
