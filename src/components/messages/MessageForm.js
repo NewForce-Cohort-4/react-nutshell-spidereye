@@ -14,7 +14,7 @@ export const MessageForm = () => {
     //I don't understand this
     const [isLoading, setIsLoading] = useState(true);
 
-    //I think this has to do with modifying a posted message
+    //lets you get the id out of the route
     const { messageId } = useParams();
     const history = useHistory();
 
@@ -23,14 +23,12 @@ export const MessageForm = () => {
         //when changing a state object or array, you need to create a copy before you make your changes and set state
         const newMessage = {...message}
         
-        
-        //I don't understand this
         newMessage[event.target.id] = event.target.value
         
         //updates state
         setMessage(newMessage)
-
     }
+
     const currentDate = new Date()
     const localTimeString = currentDate.toLocaleTimeString(undefined, {
       hour:   '2-digit',
@@ -40,8 +38,11 @@ export const MessageForm = () => {
     const localDateString = currentDate.toLocaleDateString('en-US')
 
     const handleClickSaveMessage = () => {
-        setIsLoading(true);
-        if(messageId){
+        if (message.messageText === "" ){
+            window.alert("Please enter a message.")
+        }
+        else if(messageId){
+            setIsLoading(true)
             updateMessage({
                 id: message.id,
                 userId:parseInt(message.userId),
@@ -74,7 +75,7 @@ export const MessageForm = () => {
       }
 
 
-// I don't know what is happening here/Submit button disables when it's blocked out/message to edit not populated
+// Runs on render, never gonna run again.I don't know what is happening here/Submit button disables when it's blocked out/message to edit not populated
          useEffect(() => {
             // getMessages().then(() => {
                 if(messageId) {
@@ -112,9 +113,7 @@ export const MessageForm = () => {
                  }}>
                {messageId ? <>Submit changes</> : <>Submit new message</>} </button>
 
-               <button onClick={() => {
-                    history.push(`/messages/`)
-              }} className="btn btn-primary delete-btn"> {messageId ? <> Delete </>: <> Cancel </>}</button>
+               <button onClick={handleDelete} className="btn btn-primary delete-btn"> {messageId ? <> Delete </>: <> Cancel </>}</button>
             </form>
 
 

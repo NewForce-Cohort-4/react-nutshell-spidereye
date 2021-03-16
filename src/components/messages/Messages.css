@@ -10,8 +10,8 @@
     padding: 1em;
     display: flex;
     flex-direction: column-reverse;
-    height: 25vw;
-    width: 50vw;
+    max-height: 20vh;
+    width: 30vw;
 }
    
 
