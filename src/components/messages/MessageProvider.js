@@ -1,4 +1,5 @@
 import React, { useState, createContext } from "react"
+import { useHistory } from "react-router-dom"
 
 //imported and used by other components who need the data
 export const MessageContext = createContext()
@@ -8,6 +9,7 @@ export const MessageProvider = (props) => {
 
     //setMessages modifies messages to reassign empty array
     const [messages, setMessages] = useState([])
+    const history = useHistory()
 
     //gets the data from database and then uses setMessages function make available 
     const getMessages = () => {
@@ -43,6 +45,7 @@ export const MessageProvider = (props) => {
             body: JSON.stringify(message)
         })
             .then(getMessages)
+            
     }
 
     const deleteMessage = messageId => {
@@ -50,6 +53,7 @@ export const MessageProvider = (props) => {
             method: "DELETE"
         })
             .then(getMessages)
+            .then(history.push(`/messages`))
     }
 
 
