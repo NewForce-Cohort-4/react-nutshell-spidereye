@@ -9,6 +9,7 @@ import { EventList } from "./event/EventList"
 import { TaskProvider } from './tasks/TaskProvider'
 import { TaskList } from './tasks/TaskList'
 import { TaskForm } from './tasks/TaskForm'
+import { TaskDetail } from './tasks/TaskDetails2'
 import { MessageProvider } from "./messages/MessageProvider"
 import { MessageForm } from "./messages/MessageForm"
 import { MessageList } from "./messages/MessageList"
@@ -34,7 +35,11 @@ export const ApplicationViews = () => {
           </Route>
         </MessageProvider>
 
+
         <TaskProvider>
+          <Route exact path="/tasks/detail/:tasksId(\d+)">
+		                    <TaskDetail />
+	        </Route>
           <Route exact path="/tasks">
               <TaskList />
           </Route>
@@ -69,11 +74,6 @@ export const ApplicationViews = () => {
               <EventForm />
           </Route>
         </EventProvider>
-
-
-
-
-
       </>
     );
 }
