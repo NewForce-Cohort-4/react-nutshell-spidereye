@@ -1,12 +1,16 @@
-import { Route } from "react-router-dom"
-import React, { Component } from "react"
+import { Route } from "react-router-dom";
+import React from "react";
+import { EventProvider } from "./event/EventProvider"
+import { EventForm } from "./event/EventForm"
+import { EventList } from "./event/EventList"
 import { TaskProvider } from './tasks/TaskProvider'
 import { TaskList } from './tasks/TaskList'
 import { TaskForm } from './tasks/TaskForm'
-import { TaskDetail } from "./tasks/TaskDetail"
+import { TaskDetail } from './tasks/TaskDetail1'
 import { MessageProvider } from "./messages/MessageProvider"
 import { MessageForm } from "./messages/MessageForm"
 import { MessageList } from "./messages/MessageList"
+
 
 export const ApplicationViews = () => {
 

@@ -4,7 +4,7 @@ import "./Task.css"
 import { useParams, useHistory } from "react-router-dom"
 
 export const TaskDetail = () => {
-  const { getTaskById, releaseTask } = useContext(TaskContext)
+  const { getTaskById, completeTask } = useContext(TaskContext)
 
 	const [tasks, setTasks] = useState({})
 
@@ -19,7 +19,7 @@ useEffect(() => {
       }, [])
 
 const handleRelease = () => {
-    releaseTask(tasks.id)
+    completeTask(tasks.id)
       .then(() => {
         history.push("/tasks")
       })
@@ -31,7 +31,7 @@ return (
       <div className="task__date">{tasks.date}</div>
       <div className="task__task">{tasks.task}</div> 
     </section>
-    <button onClick={handleRelease}>Release Task</button>
+    <button onClick={handleRelease}>Delete Task</button>
     <button onClick={() => {
     history.push(`/tasks/edit/${tasks.id}`)
     }}>Edit</button>
