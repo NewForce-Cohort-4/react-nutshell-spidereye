@@ -37,15 +37,15 @@ export const MessageList = () => {
             if(message.userId == localStorage.getItem("nutshell_user")){
                 return (
                 
-                <p><b>{message.user.name}</b> says   "{message.messageText}"  {message.status} {message.timestamp} {message.date} <button className="btn btn-primary" onClick={() => {
+                <p><b>{message.user.name}</b> says "{message.messageText}" <i>{message.status}</i> {message.timestamp} {message.date} <button className="btn btn-primary" onClick={() => {
                     history.push(`/messages/edit/${message.id}`)
-              }}>Edit or Delete</button> </p> 
+              }}>Edit or Delete </button> </p> 
              
                 )
             } else {
                 return (
                 
-                    <p><b>{message.user.name}</b> says   "{message.messageText}"  {message.status} {message.timestamp} {message.date}</p>
+                    <p><b>{message.user.name}</b> says "{message.messageText}" <i>{message.status}</i> {message.timestamp} {message.date}</p>
 
                     )
             }
