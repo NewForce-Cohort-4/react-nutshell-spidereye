@@ -1,5 +1,8 @@
 import { Route } from "react-router-dom";
 import React from "react";
+import { ArticleProvider } from "./article/ArticleProvider";
+import { ArticleForm } from "./article/ArticleForm"
+import { ArticleList } from "./article/ArticleList"
 import { EventProvider } from "./event/EventProvider"
 import { EventForm } from "./event/EventForm"
 import { EventList } from "./event/EventList"
@@ -16,23 +19,20 @@ export const ApplicationViews = () => {
 
     return (
       <>
-
         <MessageProvider>
-     
-         <Route exact path="/messages/">
-            <MessageList />
-         </Route>
+          <Route exact path="/messages/">
+              <MessageList />
+          </Route>
 
-         <Route exact path="/messages/create">
-            <MessageList />
-            <MessageForm />
-         </Route>
+          <Route exact path="/messages/create">
+              <MessageList />
+              <MessageForm />
+          </Route>
 
-         <Route exact path="/messages/edit/:messageId(\d+)">
-            <MessageList />
-            <MessageForm />
-         </Route>
-       
+          <Route exact path="/messages/edit/:messageId(\d+)">
+              <MessageList />
+              <MessageForm />
+          </Route>
         </MessageProvider>
 
 
@@ -51,23 +51,29 @@ export const ApplicationViews = () => {
           </Route>
         </TaskProvider>
 
-
+        <ArticleProvider>
+          <Route exact path="/articles">
+              <ArticleList />
+          </Route>
+          <Route exact path="/articles/create">
+              <ArticleForm />
+          </Route>
+          <Route path="/articles/edit/:articleId(\d+)">
+              <ArticleForm />
+          </Route>
+        </ArticleProvider>
 
         <EventProvider>
-            <Route exact path="/events">
-                <EventList />
-            </Route>
-            <Route exact path="/events/create">
-                <EventForm />
-                <EventList />
-            </Route>
-            <Route path="/events/edit/:eventId(\d+)">
-                <EventForm />
-                <EventList />
-            </Route>
+          <Route exact path="/events">
+              <EventList />
+          </Route>
+          <Route exact path="/events/create">
+              <EventForm />
+          </Route>
+          <Route path="/events/edit/:eventId(\d+)">
+              <EventForm />
+          </Route>
         </EventProvider>
-
-
       </>
     );
 }
